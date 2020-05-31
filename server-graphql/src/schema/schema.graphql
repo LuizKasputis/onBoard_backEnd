@@ -1,0 +1,25 @@
+type Mutation {
+    Login (data: LoginInputType!): User!
+}
+
+type User {
+    user: UserType!
+    token: String!
+}
+
+input LoginInputType {
+    email: String!
+    password: String!
+}
+
+type Query {
+  user(id: ID!): UserType!
+}
+
+type UserType {
+    id: ID!
+    name: String!
+    email: String!
+    birthDate: String!
+    cpf: Int!
+}
