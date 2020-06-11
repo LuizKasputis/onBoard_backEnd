@@ -2,6 +2,10 @@ type Mutation {
     Login (data: LoginInputType!): User!
 }
 
+type Mutation {
+    CreateLogin (data: CreateLoginInput!): SucessType!
+}
+
 type User {
     user: UserType!
     token: String!
@@ -10,10 +14,23 @@ type User {
 input LoginInputType {
     email: String!
     password: String!
+    rememberMe: Boolean!
 }
 
 type Query {
   user(id: ID!): UserType!
+}
+
+type SucessType{
+    sucess: String!
+}
+
+input CreateLoginInput{
+    name: String!
+    email: String!
+    birthDate: String!
+    cpf: Int!
+    password: String!
 }
 
 type UserType {
@@ -22,4 +39,5 @@ type UserType {
     email: String!
     birthDate: String!
     cpf: Int!
+    password: Int!
 }

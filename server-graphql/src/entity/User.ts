@@ -1,4 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate} from "typeorm";
+import { hashPassword } from '../hasPassword/haspassword';
 
 @Entity()
 export class User {
@@ -9,7 +10,7 @@ export class User {
     @Column()
     name: string
 
-    @Column()
+    @Column({ unique: true})
     email: string
 
     @Column()
@@ -18,4 +19,15 @@ export class User {
     @Column()
     cpf: number
 
-}
+    @Column()
+    password: string
+
+    @BeforeInsert()
+    @BeforeUpdate()
+        hashpassword(){
+            if (this.password) {
+                this.password = hashPassword(this.password);
+            }
+        }
+
+};
