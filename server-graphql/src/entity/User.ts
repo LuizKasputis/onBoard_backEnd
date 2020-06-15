@@ -14,7 +14,7 @@ export class User {
     email: string
 
     @Column()
-    birthDate: Date
+    birthDate: String
 
     @Column()
     cpf: number
