@@ -9,7 +9,7 @@ before(async () => {
     startServer();
 });
 
-require('./test-login');
+require('./test-create-login-authentication');
 
 after( async () => {
     await dbConnection.close();
