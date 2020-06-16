@@ -8,7 +8,7 @@ import { INVALID_CREDENTIALS } from "../const/errors";
 import { ONE_WEEK, TEN_MINUTES } from "../const/const";
 
 const NAME = "jean2";
-const EMAIL = "jean2@gmail.com";
+const EMAIL = "jean3@gmail.com";
 const BIRTHDATE = '2019/01/20';
 const CPF = 12312313;
 const PASSWORD = '123456';
@@ -89,6 +89,7 @@ describe('Simple test login',() =>{
         expect(EMAIL).to.be.equals(res.body?.data?.Login.user.email);
         expect(CPF).to.be.equals(res.body?.data?.Login.user.cpf);
         expect(BIRTHDATE).to.be.equals(res.body?.data?.Login.user.birthDate);
+        console.log(res.body?.data?.Login.token);
     });
 
     it('should return invalid credations', async function(){
@@ -133,6 +134,21 @@ describe('Simple test login',() =>{
 
         const timeToken = jwt.decode(res.body.data.Login.token);
         expect(timeToken.exp - timeToken.iat).to.be.equals(ONE_WEEK);
+    });
+
+    it('should create login sucessfully', async function(){
+        const res = await loginCreate( 
+            {
+                data: {
+                    name: NAME,
+                    cpf: CPF,
+                    email: EMAIL,
+                    birthDate: BIRTHDATE,
+                    password: PASSWORD,
+                }
+            }
+        );
+        expect(sucessCreate).to.be.equals(res.body?.data?.CreateLogin?.sucess);
     });
 
 });
