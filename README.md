@@ -2,7 +2,7 @@
 
 Project`s Name : onBoard
 
-Project`s Description : Utilizando git
+Project`s Description : backend introduction
 
 Environment and tools : MacBook PRO , node Version v10.16.0 , react-native 0.62, Language javascript using type-script, Xcode 11.2
 
